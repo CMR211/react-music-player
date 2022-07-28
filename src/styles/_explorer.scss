@@ -1,0 +1,36 @@
+.explorer {
+    grid-column: 1;
+    grid-row: 1;
+    border-right: solid $clr-inactive 1px;
+    padding-right: 1rem;
+    &__item {
+        border-bottom: solid $clr-inactive 1px;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    &__avatar {
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+.explorer__menu__title {
+    margin-bottom: 1rem;
+    color: $clr-inactive;
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+.explorer__menu__item {
+    color: $clr-inactive;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.3rem;
+    &:hover {
+        color: $clr-active;
+        cursor: pointer;
+    }
+}
