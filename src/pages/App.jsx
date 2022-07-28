@@ -43,8 +43,8 @@ export default function App() {
 
     return (
         <div className="main-container">
-            <Explorer currentPage={currentPage} spotifyToken={spotifyToken} setCurrentPage={setCurrentPage} />
-            <Content currentPage={currentPage} />
+            <Explorer currentPage={currentPage} spotifyToken={spotifyToken} setCurrentPage={setCurrentPage} logoutFromSpotify={logoutFromSpotify} />
+            <Content currentPage={currentPage} spotifyToken={spotifyToken} />
             <div className="player">Player</div>
         </div>
     )
