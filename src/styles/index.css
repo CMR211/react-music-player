@@ -17,7 +17,8 @@ body {
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("../asset/bg-m.jpg");
   background-size: cover;
   font-family: "Open Sans", sans-serif;
@@ -26,9 +27,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -47,8 +48,11 @@ body:before {
 }
 
 .main-container {
-  padding: 1rem;
-  max-width: 70rem;
+  height: 100%;
+  margin: 0;
+  padding: 2rem;
+  padding-top: 2rem;
+  width: 70rem;
   background-color: rgba(4, 4, 53, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -68,7 +72,7 @@ body:before {
   -ms-grid-row: 1;
   grid-row: 1;
   border-right: solid rgba(255, 255, 255, 0.3) 1px;
-  padding-right: 1rem;
+  padding-right: 2rem;
 }
 
 .explorer__item {
@@ -157,20 +161,24 @@ body:before {
 }
 
 .content-title {
-  margin: 1rem 0 3rem 2rem;
+  margin-bottom: 2rem;
 }
 
-.playlists {
+.albums {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  -ms-grid-columns: (200px)[4];
+      grid-template-columns: repeat(4, 200px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 100%;
   padding-bottom: 2rem;
+  width: 100%;
+  overflow-y: scroll;
 }
 
-.playlist-image {
+.album-image {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,15 +187,12 @@ body:before {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
-.playlist-image img {
+.album-image img {
   width: 200px;
   height: 200px;
   border-radius: 0.2rem;
@@ -198,15 +203,20 @@ body:before {
   cursor: pointer;
 }
 
-.playlist-image:hover img {
+.album-image:hover img {
   border: 5px solid white;
   opacity: 1;
 }
 
-.playlist-image p {
+.album-image p {
   font-size: 1rem;
   font-weight: 500;
-  text-align: center;
+}
+
+.album-image p:nth-of-type(n+2) {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
 }
 
 .content {

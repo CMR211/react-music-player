@@ -1,4 +1,5 @@
 import React from "react"
+import axios from "axios"
 import Explorer from "../components/Explorer"
 import Content from "./Content"
 
@@ -29,6 +30,19 @@ export default function App() {
         setSpotifyToken(token)
     }, [])
 
+    const [userID, setUserID] = React.useState(0)
+    React.useEffect(
+        () => async () => {
+            const { data } = await axios.get("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: `Bearer ${spotifyToken}`,
+                },
+            })
+            setUserID(data.id)
+        },
+        []
+    )
+
     function logoutFromSpotify() {
         setSpotifyToken("")
         window.localStorage.removeItem("token")
@@ -43,8 +57,8 @@ export default function App() {
 
     return (
         <div className="main-container">
-            <Explorer currentPage={currentPage} spotifyToken={spotifyToken} setCurrentPage={setCurrentPage} logoutFromSpotify={logoutFromSpotify} />
-            <Content currentPage={currentPage} spotifyToken={spotifyToken} />
+            <Explorer userID={userID} currentPage={currentPage} spotifyToken={spotifyToken} setCurrentPage={setCurrentPage} logoutFromSpotify={logoutFromSpotify} />
+            <Content userID={userID} currentPage={currentPage} spotifyToken={spotifyToken} />
             <div className="player">Player</div>
         </div>
     )

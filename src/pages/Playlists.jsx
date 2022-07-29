@@ -1,8 +1,13 @@
 import React from "react"
 import axios from "axios"
 
+import Album from "../components/Album"
+import useSpotifyFetch from "../utils/useSpotifyFetch.ts"
+
 export default function Playlists({ spotifyToken }) {
     const [playlists, setPlaylists] = React.useState("")
+    const [offset, setOffset] = React.useState(0)
+
     React.useEffect(
         () => async () => {
             const { data } = await axios.get("https://api.spotify.com/v1/me/playlists", {
@@ -11,7 +16,7 @@ export default function Playlists({ spotifyToken }) {
                 },
                 params: {
                     limit: 8,
-                    offset: 0
+                    offset: 0,
                 },
             })
             setPlaylists(data.items)
@@ -26,14 +31,9 @@ export default function Playlists({ spotifyToken }) {
             </div>
         )
     return (
-        <div className="playlists">
+        <div className="albums">
             {playlists.map(playlist => {
-                return (
-                    <div className="playlist-image">
-                        <img src={playlist.images[0].url} />
-                        <p>{playlist.name}</p>
-                    </div>
-                )
+                return <Album image={playlist.images[0].url} title={playlist.name} subtitle={playlist.owner.display_name} />
             })}
         </div>
     )

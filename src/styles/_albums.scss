@@ -1,24 +1,25 @@
 .content-title {
-    margin: 1rem 0 3rem 2rem;
+    margin-bottom: 2rem;
 }
 
-.playlists {
+.albums {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 200px);
+    justify-content: space-between;
     height: 100%;
     padding-bottom: 2rem;
+    width: 100%;
+    overflow-y: scroll;
 }
 
-.playlist-image {
+.album-image {
     display: flex;
     gap: 0.5rem;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
-.playlist-image img {
+.album-image img {
     width: 200px;
     height: 200px;
     border-radius: $border-radius;
@@ -28,13 +29,18 @@
     cursor: pointer;
 }
 
-.playlist-image:hover img {
+.album-image:hover img {
     border: 5px solid $clr-active;
     opacity: 1;
 }
 
-.playlist-image p {
+.album-image p {
     font-size: 1rem;
     font-weight: 500;
-text-align: center;
+}
+
+.album-image p:nth-of-type(n+2) {
+    font-size: 0.8rem;
+    color: $clr-inactive;
+    font-weight: 300;
 }

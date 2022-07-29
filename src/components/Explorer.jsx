@@ -10,14 +10,14 @@ import capitalize from "../utils/capitalize"
 
 const explorerItems = [
     { title: "playlists", icon: "ri-play-list-fill", type: "menu" },
-    { title: "top artists", icon: "ri-star-fill", type: "menu" },
+    { title: "new releases", icon: "ri-star-fill", type: "menu" },
     { title: "discover", icon: "ri-home-2-fill", type: "menu" },
     { title: "trending", icon: "ri-bar-chart-fill", type: "menu" },
     { title: "broadcast", icon: "ri-broadcast-fill", type: "menu" },
-    { title: "inbox", icon: "ri-inbox-fill", type: "categories" },
-    { title: "friends", icon: "ri-user-star-fill", type: "categories" },
-    { title: "community", icon: "ri-team-fill", type: "categories" },
-    { title: "team", icon: "ri-bubble-chart-fill", type: "categories" },
+    { title: "inbox", icon: "ri-inbox-fill", type: "social" },
+    { title: "friends", icon: "ri-user-star-fill", type: "social" },
+    { title: "community", icon: "ri-team-fill", type: "social" },
+    { title: "team", icon: "ri-bubble-chart-fill", type: "social" },
 ]
 
 export default function Explorer({ setCurrentPage, currentPage, spotifyToken, logoutFromSpotify }) {
@@ -56,15 +56,15 @@ export default function Explorer({ setCurrentPage, currentPage, spotifyToken, lo
                 {explorerItems
                     .filter(item => item.type === "menu")
                     .map(item => (
-                        <ExplorerItem title={capitalize(item.title)} icon={item.icon} onClick={() => setCurrentPage(item.title)} />
+                        <ExplorerItem id={item.title} title={capitalize(item.title)} icon={item.icon} onClick={() => setCurrentPage(item.title)} />
                     ))}
             </ExplorerMenu>
 
-            <ExplorerMenu title="Categories">
+            <ExplorerMenu title="Social">
                 {explorerItems
-                    .filter(item => item.type === "categories")
+                    .filter(item => item.type === "social")
                     .map(item => (
-                        <ExplorerItem title={capitalize(item.title)} icon={item.icon} onClick={() => setCurrentPage(item.title)} />
+                        <ExplorerItem id={item.title} title={capitalize(item.title)} icon={item.icon} onClick={() => setCurrentPage(item.title)} />
                     ))}
             </ExplorerMenu>
         </div>

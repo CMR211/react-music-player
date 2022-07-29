@@ -1,5 +1,6 @@
 body {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     background-image: url("../asset/bg-m.jpg");
     background-size: cover;
     &:before {
@@ -16,14 +17,16 @@ body {
     font-weight: 300;
     color: white;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 }
 
 .main-container {
-    // margin: 10vh auto;
-    padding: 1rem;
-    max-width: 70rem;
+    height: 100%;
+    margin: 0;
+    padding: 2rem;
+    padding-top: 2rem;
+    width: 70rem;
     background-color: rgba(rgb(4, 4, 53), 0.3);
     backdrop-filter: blur(10px);
     border-radius: $border-radius;
