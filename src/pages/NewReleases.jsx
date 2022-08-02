@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import useSpotifyNewReleases from "../utils/useSpotifyNewReleases"
 
 import Album from "../components/Album"
 
@@ -7,23 +8,7 @@ export default function NewReleases({ spotifyToken }) {
     const [albums, setAlbums] = React.useState("")
     const [offset, setOffset] = React.useState(0)
 
-    React.useEffect(
-        () => async () => {
-            const { data } = await axios.get("https://api.spotify.com/v1/browse/new-releases", {
-                headers: {
-                    Authorization: `Bearer ${spotifyToken}`,
-                },
-                params: {
-                    limit: 8,
-                    offset: offset,
-                    country: "PL",
-                },
-            })
-            setAlbums(data.albums.items)
-            console.log(albums)
-        },
-        []
-    )
+    useSpotifyNewReleases(spotifyToken, setAlbums, albums, offset)
 
     if (!albums)
         return (
